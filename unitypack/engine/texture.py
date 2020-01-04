@@ -90,7 +90,7 @@ class TextureFormat(IntEnum):
 		elif self == TextureFormat.ARGB32:
 			return "ARGB"
 		elif self == TextureFormat.RGB565:
-			return "RGB;16"
+			return "BGR;16"
 		elif self == TextureFormat.Alpha8:
 			return "A"
 		elif self == TextureFormat.RGBA4444:
@@ -205,7 +205,7 @@ class Texture2D(Texture):
 			codec = "raw"
 			args = (self.format.pixel_format, )
 
-		mode = "RGB" if self.format.pixel_format in ("RGB", "RGB;16") else "RGBA"
+		mode = "RGB" if self.format.pixel_format in ("RGB", "BGR;16") else "RGBA"
 		size = (self.width, self.height)
 
 		data = self.image_data
